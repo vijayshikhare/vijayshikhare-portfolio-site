@@ -41,28 +41,46 @@ function getProjects() {
 
 
 function showProjects(projects) {
-    let projectsContainer = document.querySelector(".work .box-container");
-    let projectsHTML = "";
-    projects.forEach(project => {
-        projectsHTML += `
-        <div class="grid-item ${project.category}">
+  let projectsContainer = document.querySelector(".work .box-container");
+  let projectsHTML = "";
+
+  // your repo name for GitHub Pages
+  const repoName = "vijayshikhare-portfolio-site";
+
+  projects.forEach(project => {
+    // Clean the image path
+    let imagePath = project.image
+      .replace(/^(\.\.\/)+/, "")        // remove ../ from start
+      .replace(/\.png\.png$/, ".png");  // fix accidental double .png.png
+
+    // If running on GitHub Pages, prepend repo name
+    if (window.location.hostname.includes("github.io")) {
+      imagePath = `/${repoName}/${imagePath}`;
+    }
+
+    projectsHTML += `
+      <div class="grid-item ${project.category}">
         <div class="box tilt" style="width: 380px; margin: 1rem">
-      <img draggable="false" src="${project.image}" alt="project" />
-      <div class="content">
-        <div class="tag">
-        <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
+          <img draggable="false" src="${imagePath}" alt="project" />
+          <div class="content">
+            <div class="tag">
+              <h3>${project.name}</h3>
+            </div>
+            <div class="desc">
+              <p>${project.desc}</p>
+              <div class="btns">
+                <a href="${project.links.view}" class="btn" target="_blank">
+                  <i class="fas fa-eye"></i> View
+                </a>
+                <a href="${project.links.code}" class="btn" target="_blank">
+                  Code <i class="fas fa-code"></i>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    </div>`
-    });
+      </div>`;
+  });
     projectsContainer.innerHTML = projectsHTML;
 
 
