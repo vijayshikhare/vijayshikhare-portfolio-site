@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Cyber Security Website",
+    "desc": "Professional cybersecurity website featuring modern UI with sections like hero, about, services, team, blog, and contact. Built using HTML5, CSS3, JavaScript.",
+    "image": "cs_website",
+    "category": "mern",
+    "links": {
+      "view": "https://vijayshikhare.github.io/CyberSecurityClub",
+      "code": "https://github.com/vijayshikhare/CyberSecurityClub.git"
+    }
+  },
+
+  {
+    "name": "shikharecoder-portfolio-site",
+    "desc": "Personal portfolio website showcasing projects, skills, and experience. Built using HTML5 and CSS3 with a modern responsive design and smooth interactive features.",
+    "image": "shikharecoder_portfolio",
+    "category": "basicweb",
+    "links": {
+      "view": "https://vijayshikhare.github.io/CyberSecurityClub",
+      "code": "https://github.com/vijayshikhare/shikharecoder-portfolio-site.git"
+    }
+  }
+]
