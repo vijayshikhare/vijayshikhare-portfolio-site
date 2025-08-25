@@ -44,17 +44,19 @@ function showProjects(projects) {
   let projectsContainer = document.querySelector(".work .box-container");
   let projectsHTML = "";
 
-  // your repo name for GitHub Pages
-  const repoName = "vijayshikhare-portfolio-site";
+  // automatically detect repo name from pathname
+  const repoName = window.location.hostname.includes("github.io")
+    ? window.location.pathname.split("/")[1]
+    : "";
 
   projects.forEach(project => {
-    // Clean the image path
+    // Clean up path
     let imagePath = project.image
-      .replace(/^(\.\.\/)+/, "")        // remove ../ from start
-      .replace(/\.png\.png$/, ".png");  // fix accidental double .png.png
+      .replace(/^(\.\.\/)+/, "")        // remove ../
+      .replace(/\.png\.png$/, ".png");  // fix double .png.png
 
-    // If running on GitHub Pages, prepend repo name
-    if (window.location.hostname.includes("github.io")) {
+    // If on GitHub Pages, add repo name prefix
+    if (repoName) {
       imagePath = `/${repoName}/${imagePath}`;
     }
 
